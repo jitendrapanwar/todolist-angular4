@@ -1,0 +1,24 @@
+ <button type="button" class="btn btn-outline-dark" (click)="onLogoutClick()" >Logout</button>
+ 
+<h1>To-do list</h1>
+<form (submit)="onAddTask()">
+<div class="form-group form-inline">
+  <input type="text" class="form-control mr-10" name="taskname" [(ngModel)]="taskname"/>
+  <button type="button" class="btn btn-primary" (click)="onAddTask()" >Add</button>
+</div>
+</form>
+<ul class="list-group col-md-6 mb-20">
+    <li class="list-group-item" *ngFor="let task of tasks">
+      <div class="form-group form-inline">
+      <input type="checkbox"
+      class="mr-10" 
+      [checked]="task.completed"
+      [(ngModel)]="task.completed"
+      (change)="onSelectTodo()"
+      />
+      <span class="mr-10" [ngClass]="task.completed ? 'completed' : ''">{{task.title}}</span>
+      <button class="btn btn-primary" (click)="onDeleteTask(task)">X</button>
+      </div>
+    </li>
+    
+</ul>
